@@ -38,10 +38,10 @@ Object-Oriented Programming (OOP) is a programming paradigm based on the concept
 ## How to Run the Examples
 Each Ruby file can be run independently:
 ```bash
-ruby basic_class.rb
-ruby inheritance.rb
-ruby modules_mixins.rb
-ruby polymorphism.rb
-ruby encapsulation.rb
-ruby abstraction.rb
+ruby basics/basic_class.rb
+ruby basics/inheritance.rb
+ruby basics/modules_mixins.rb
+ruby basics/polymorphism.rb
+ruby basics/encapsulation.rb
+ruby basics/abstraction.rb
 ```

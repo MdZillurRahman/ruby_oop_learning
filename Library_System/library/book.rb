@@ -1,9 +1,12 @@
 require 'fileutils'
+require_relative 'utility'
 
 class Book
-  def initialize(books, current_user)
-    @books = books
+  include Utility
+
+  def initialize(current_user)
     @current_user = current_user
+    @users = load_data('data/users.json', [])
     FileUtils.mkdir_p('data') # Create data directory if it doesn't exist
   end
 
@@ -15,16 +18,15 @@ class Book
       status: status
     }
 
-    user_index = @users.find_index { |u| u[:id] == @current_user[:id] }
+    user_index = find_current_user_index
     @users[user_index][:books] << book
-    @current_user = @users[user_index]
-    save_data('data/users.json', @users)
+    update_user_data(user_index)
     "Book added successfully!"
   end
 
   def view
     if @current_user[:books].empty?
-      return "No books in your library!"
+      return "\nNo books in your library!"
     end
 
     @current_user[:books].map do |book|
@@ -32,13 +34,5 @@ class Book
     end.join("\n")
   end
 
-  private
-
-  def generate_id
-    rand(10000..99999)
-  end
-
-  def save_data(filename, data)
-    File.write(filename, JSON.pretty_generate(data))
-  end
+  private :generate_id, :save_data, :load_data, :find_current_user_index, :update_user_data
 end

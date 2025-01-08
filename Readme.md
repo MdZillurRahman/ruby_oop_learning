@@ -45,3 +45,55 @@ ruby basics/polymorphism.rb
 ruby basics/encapsulation.rb
 ruby basics/abstraction.rb
 ```
+
+
+# Library Management System
+
+A Ruby-based library management system that allows users to manage their personal book collection and wishlist.
+
+## Features
+
+- User Authentication (Login/Register)
+- Book Management
+  - Add books
+  - Edit books
+  - Delete books
+  - View all books
+- Wishlist Management
+  - Add books to wishlist
+  - View wishlist
+
+## Requirements
+
+- Ruby
+- BCrypt gem for password encryption
+
+## Installation
+
+1. Open Library_System file in the code editor.
+
+2. Install required gem:
+```bash
+gem install bcrypt
+```
+
+3. Run the application:
+```bash
+ruby library_system.rb
+```
+
+## Usage
+
+1. Register a new account or login with existing credentials
+2. Use the menu options to:
+   - Manage your book collection
+   - Add books to your wishlist
+   - Update book status (read/reading/to-read)
+   - View your collection and wishlist
+
+## Data Storage
+
+The system uses JSON files to store:
+- User data (users.json)
+
+All passwords are encrypted using BCrypt for security.

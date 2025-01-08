@@ -1,8 +1,11 @@
 require 'bcrypt'
 require 'json'
 require 'fileutils'
+require_relative 'utility'
 
 class Auth
+  include Utility
+  
   def initialize(users)
     @users = users
     FileUtils.mkdir_p('data') # Create data directory if it doesn't exist
@@ -30,21 +33,12 @@ class Auth
     user = @users.find { |u| u[:username] == username }
     if user && BCrypt::Password.new(user[:password]) == password
       user
-      "Successfully logged in!!"
     else
       nil
     end
   end
 
-  private
-
-  def generate_id
-    rand(10000..99999)
-  end
-
-  def save_data(filename, data)
-    File.write(filename, JSON.pretty_generate(data))
-  end
+  private :generate_id, :save_data
 end
 
 # Load users from file or initialize an empty array
